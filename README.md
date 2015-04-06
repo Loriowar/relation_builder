@@ -2,6 +2,8 @@
 
 This is a gem for easy build of nested relations through options of initialize
 
+[![Gem Version](https://badge.fury.io/rb/relation_builder.png)](http://badge.fury.io/rb/relation_builder)
+
 ## Installation
 
 Add this line to your application's Gemfile:
