@@ -6,7 +6,7 @@ module RelationBuilder
       alias_method_chain :initialize, :build_relation
     end
 
-    private
+  private
 
     # Chain initialize method for support additional options
     def initialize_with_build_relation(new_attributes = nil, options = {})
@@ -119,18 +119,18 @@ module RelationBuilder
 
     # Merge of initialize params and additional options for build relations through nested_attributes
     def nested_deep_merge(master, slave)
-      # Add alternative deep_merge method for instanse of Hash
-      extend_deep_merge = ->(obj){obj.send(:extend, RelationBuilder::ExtDeepMerge) unless master.is_a? RelationBuilder::ExtDeepMerge; obj)
+      # Add alternative deep_merge method for instance of Hash
+      extend_deep_merge = ->(obj){obj.send(:extend, RelationBuilder::ExtDeepMerge) unless master.is_a? RelationBuilder::ExtDeepMerge; obj}
 
       extend_deep_merge.call(master)
       extend_deep_merge.call(slave)
 
       # extend_deep_merge call block for any coincide keys
       master.ext_deep_merge(slave) do |_, master_val, slave_val|
-        # special processiog of attributes for has_many relation (see nested_attributes documentation for details)
+        # special processing of attributes for has_many relation (see nested_attributes documentation for details)
         if master_val.is_a?(Hash) && master_val.all?{|k, _| key_is_numeric?(k)}
           extend_deep_merge.call(master_val)
-          master_val.inject(extend_deep_merge.call({}) do |h, (inner_key, value)|
+          master_val.inject(extend_deep_merge.call({})) do |h, (inner_key, value)|
             h[inner_key] = nested_deep_merge(value, slave_val)
             h
           end
@@ -149,7 +149,7 @@ module RelationBuilder
       !(key =~ /^\d+$/).nil?
     end
 
-    class_methods do
+    module ClassMethods
       # stub
     end
 

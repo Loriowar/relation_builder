@@ -1,7 +1,13 @@
 require 'relation_builder/version'
-require 'relation_builder/initialize_options'
-require 'relation_builder/ext_deep_merge'
 
 module RelationBuilder
-  # stub
+  extend ActiveSupport::Autoload
+
+  autoload :InitializeOptions
+  autoload :ExtDeepMerge
+
+  eager_autoload do
+    autoload :InitializeOptions
+    autoload :ExtDeepMerge
+  end
 end
