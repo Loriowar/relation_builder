@@ -3,7 +3,9 @@ module RelationBuilder
     # Alternative for native method of Hash
     # It call block for any coincide keys even if values is Hash too
     def ext_deep_merge(other_hash, &block)
-      dup.ext_deep_merge!(other_hash, &block)
+      ext_hash = dup
+      ext_hash.send(:extend, RelationBuilder::ExtDeepMerge) unless ext_hash.is_a? RelationBuilder::ExtDeepMerge
+      ext_hash.ext_deep_merge!(other_hash, &block)
     end
 
     # Same as +ext_deep_merge+, but modifies +self+.
