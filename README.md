@@ -44,7 +44,7 @@ building = Building.new(params, auto_build_relations: {flats: [:rooms, :bathroom
 
 ### How to install?
 
-In additions to `gem instal` you need to
+In additions to `gem install` you need to
 
 ```ruby
 include RelationBuilder::InitializeOptions
@@ -61,8 +61,8 @@ Bydefault using `:nested` strategy.
 ### 'Nested' strategy
 
 It use [nested_attributes](http://api.rubyonrails.org/classes/ActiveRecord/NestedAttributes/ClassMethods.html)
-for build nested relations. If you have semifiled params. For example, in params you have attributes for building,
-flat and room. And suppose that in any case you want to have a bathroom. So you can say same thig as in previous
+for build nested relations. If you have half-filled params. For example, in params you have attributes for building,
+flat and room. And suppose that in any case you want to have a bathroom. So you can say same thing as in previous
  example:
 
 ```ruby
@@ -74,7 +74,7 @@ And additionally in any case for each flat you get a bathroom.
 
 ### 'Build' strategy
 
-It based on simple build association. It cat be useful if you doesn't want to have a deal with
+It based on simple build association. It can be useful if you doesn't want to have a deal with
 [nested_attributes](http://api.rubyonrails.org/classes/ActiveRecord/NestedAttributes/ClassMethods.html).
 This strategy has same syntax with `auto_build_relations` key, but have several restrictions.
 
@@ -90,9 +90,9 @@ Negative moments:
 
 ## Purpose
 
-One of aim of this gem is easy way to deal with [formtastic](https://github.com/justinfrench/formtastic) form.
+One of aim of this gem is easy way to deal with any kind of form_builder (for example, [formtastic](https://github.com/justinfrench/formtastic) ).
 If you want to make a form with several nested object you must initialize all objects before send them
-into the form. Otherwise you can't see any fields of nested object on the form. For many nested obeject it can be
+into the form. Otherwise you can't see any fields of nested object on the form. For many nested object it can be
 annoying.
 
 ## Contributing
